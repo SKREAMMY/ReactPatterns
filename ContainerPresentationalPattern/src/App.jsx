@@ -1,35 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import Presentation from "./components/Presentation";
+import ContainerComponent from "./components/ContainerComponent/ContainerComponent";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
+  //Consider this, A component has to perform a fetch
+  // operation to render some data. Rather than fetching
+  // every time in the component, we elevate and seperate this
+  // into two components, One solely to fetch and one to present
+  // Now the presentation component can get the props from the
+  // container component to render the data, thus eliminating the
+  // need to fetch every single time.
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <ContainerComponent />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
